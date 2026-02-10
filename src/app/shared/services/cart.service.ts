@@ -10,21 +10,14 @@ interface ProductWithQuantity {
   providedIn: 'root',
 })
 export class CartService {
-  readonly #cart = signal<ProductWithQuantity[]>([]);
+  readonly #cart = signal<Record<Product['id'], ProductWithQuantity>>({});
 
-  readonly nbItemsInCart = computed(() => this.#cart().length);
+  readonly nbItemsInCart = computed(() => Object.entries(this.#cart()).length);
 
   addToCart(product: Product) {
-    const foundProductIndex = this.#cart().findIndex((i) => i.product.id == product.id);
-    if (foundProductIndex < 0) {
-      this.#cart.set([ ...this.#cart(), { product, quantity: 1 }]);
-    } else {
-      this.#cart.set([
-        ...this.#cart().slice(0, foundProductIndex),
-        { product, quantity: this.#cart()[foundProductIndex].quantity + 1 },
-        ...this.#cart().slice(foundProductIndex + 1),
-      ]);
-    }
-
+    this.#cart.set({
+      ...this.#cart(),
+      [product.id]: { product, quantity: (this.#cart()[product.id]?.quantity ?? 0) + 1 },
+    });
   }
 }
