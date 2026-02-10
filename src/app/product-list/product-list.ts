@@ -1,4 +1,4 @@
-import { Component, input, OnChanges, output, SimpleChanges } from '@angular/core';
+import { Component, input, OnChanges, SimpleChanges } from '@angular/core';
 import { ProductCard } from '../shared/components/product-card/product-card';
 import { Product } from '../shared/models/product';
 import { JsonPipe } from '@angular/common';
@@ -15,7 +15,6 @@ import { JsonPipe } from '@angular/common';
 export class ProductList implements OnChanges {
   // @Input({ required: true }) filter: string | null;
   readonly filter = input.required<string | null>();
-  readonly addToCart = output<Product>();
 
   protected readonly products: Product[] = [
     {

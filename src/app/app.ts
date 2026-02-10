@@ -27,14 +27,7 @@ export class App {
 
   protected filter: string | null = null;
 
-  cart: Product[] = [];
-
   protected setFilter(filter: string | null) {
     this.filter = filter;
-  }
-
-  protected addItemToCart(product: Product): void {
-    // this.cart = [...this.cart, product];
-    this.cart.push(product);
   }
 }

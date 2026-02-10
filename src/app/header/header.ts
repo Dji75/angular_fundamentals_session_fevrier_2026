@@ -1,5 +1,6 @@
-import { Component, input, Input, output } from '@angular/core';
+import { Component, inject, input, Input, output } from '@angular/core';
 import { RandomColor } from '../shared/directives/random-color';
+import { CartService } from '../shared/services/cart.service';
 
 @Component({
   selector: 'ngs-header',
@@ -10,7 +11,8 @@ import { RandomColor } from '../shared/directives/random-color';
   styleUrl: './header.scss',
 })
 export class Header {
-  readonly nbItemsInCart = input<number>();
+  protected readonly cartService = inject(CartService);
+
   readonly filterChanged = output<string | null>();
   // @Output() readonly filterChanged = new EventEmitter<string | null>();
 

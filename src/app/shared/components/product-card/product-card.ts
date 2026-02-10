@@ -1,7 +1,8 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { Product } from '../../models/product';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import { TruncatePipe } from '../../pipes/truncate-pipe';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'ngs-product-card',
@@ -38,12 +39,11 @@ export class ProductCard {
   readonly product = input.required<Product>();
   // @Input({ required: true }) readonly product: Product;
 
-  readonly addToCart = output<Product>();
-
+  readonly #cartService = inject(CartService);
 
   protected readonly currencySymbol = Intl.NumberFormat('en', {style:'currency', currency: 'USD'}).formatToParts().find(part => part.type === 'currency')?.value;
 
-  // protected add(): void {
-  //   this.addToCart.emit(this.product());
-  // }
+  protected addToCart(): void {
+    this.#cartService.addToCart(this.product());
+  }
 }
