@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './header/header';
 import { ProductList } from './product-list/product-list';
+import { RandomColor } from './shared/directives/random-color';
 
 enum State {
   Loading = 'loading',
@@ -11,7 +12,7 @@ enum State {
 
 @Component({
   selector: 'ngs-root',
-  imports: [RouterOutlet, Header, ProductList],
+  imports: [RouterOutlet, Header, ProductList, RandomColor],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

@@ -1,8 +1,11 @@
 import { Component, output } from '@angular/core';
+import { RandomColor } from '../shared/directives/random-color';
 
 @Component({
   selector: 'ngs-header',
-  imports: [],
+  imports: [
+    RandomColor
+  ],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })

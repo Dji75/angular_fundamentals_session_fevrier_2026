@@ -40,7 +40,7 @@
                       </path>
                     </svg>
                     <div class="flex flex-col">
-                      <div class="text-left"><strong>Login</strong></div>
+                      <div class="text-left"><strong ngs-random-color>Login</strong></div>
                       <div>or Sign Up</div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -85,15 +85,18 @@
   <div>
     <a class="categoryLink" [class.isActive]="filter === 'electronics'" href="/electronics" (click)="updateFilter('electronics'); $event.preventDefault()">
       <h1 class="truncate">Electronics</h1>
-    </a></div>
+    </a>
+  </div>
   <div>
     <a class="categoryLink" [class.isActive]="filter === 'jewelery'" href="/jewelery" (click)="updateFilter('jewelery'); $event.preventDefault()">
       <h1 class="truncate">Jewelery</h1>
-    </a></div>
+    </a>
+  </div>
   <div>
     <a class="categoryLink" [class.isActive]="filter === 'men\'s clothing'" href="/men's clothing" (click)="updateFilter('men\'s clothing'); $event.preventDefault()">
       <h1 class="truncate">Men's Clothing</h1>
-    </a></div>
+    </a>
+  </div>
   <div>
     <a class="categoryLink" [class.isActive]="filter === 'women\'s clothing'" href="/women's clothing" (click)="updateFilter('women\'s clothing'); $event.preventDefault()">
       <h1 class="truncate">Women's Clothing</h1>
