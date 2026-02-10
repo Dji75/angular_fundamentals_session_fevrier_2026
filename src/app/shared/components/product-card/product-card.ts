@@ -1,12 +1,14 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Product } from '../../models/product';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
+import { TruncatePipe } from '../../pipes/truncate-pipe';
 
 @Component({
   selector: 'ngs-product-card',
   imports: [
     CurrencyPipe,
-    DecimalPipe
+    DecimalPipe,
+    TruncatePipe
   ],
   templateUrl: './product-card.html',
   styleUrl: './product-card.scss',
@@ -36,6 +38,12 @@ export class ProductCard {
   readonly product = input.required<Product>();
   // @Input({ required: true }) readonly product: Product;
 
+  readonly addToCart = output<Product>();
+
 
   protected readonly currencySymbol = Intl.NumberFormat('en', {style:'currency', currency: 'USD'}).formatToParts().find(part => part.type === 'currency')?.value;
+
+  // protected add(): void {
+  //   this.addToCart.emit(this.product());
+  // }
 }

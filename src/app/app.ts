@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { Header } from './header/header';
 import { ProductList } from './product-list/product-list';
 import { RandomColor } from './shared/directives/random-color';
+import { Product } from './shared/models/product';
 
 enum State {
   Loading = 'loading',
@@ -26,7 +27,14 @@ export class App {
 
   protected filter: string | null = null;
 
+  cart: Product[] = [];
+
   protected setFilter(filter: string | null) {
     this.filter = filter;
+  }
+
+  protected addItemToCart(product: Product): void {
+    // this.cart = [...this.cart, product];
+    this.cart.push(product);
   }
 }

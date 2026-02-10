@@ -1,11 +1,13 @@
-import { Component, input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, input, OnChanges, output, SimpleChanges } from '@angular/core';
 import { ProductCard } from '../shared/components/product-card/product-card';
 import { Product } from '../shared/models/product';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'ngs-product-list',
   imports: [
-    ProductCard
+    ProductCard,
+    JsonPipe
   ],
   templateUrl: './product-list.html',
   styleUrl: './product-list.scss',
@@ -13,6 +15,7 @@ import { Product } from '../shared/models/product';
 export class ProductList implements OnChanges {
   // @Input({ required: true }) filter: string | null;
   readonly filter = input.required<string | null>();
+  readonly addToCart = output<Product>();
 
   protected readonly products: Product[] = [
     {
@@ -22,7 +25,7 @@ export class ProductList implements OnChanges {
     "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
     "category": "men's clothing",
     "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {"rate": 3.9, "count": 120}
+    // "rating": {"rate": 3.9, "count": 120}
   }, {
     "id": 2,
     "title": "Mens Casual Premium Slim Fit T-Shirts ",
@@ -30,7 +33,7 @@ export class ProductList implements OnChanges {
     "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
     "category": "men's clothing",
     "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png",
-    "rating": {"rate": 4.1, "count": 259}
+    // "rating": {"rate": 4.1, "count": 259}
   }, {
     "id": 3,
     "title": "Mens Cotton Jacket",

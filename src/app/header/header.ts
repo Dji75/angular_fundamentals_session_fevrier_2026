@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, input, Input, output } from '@angular/core';
 import { RandomColor } from '../shared/directives/random-color';
 
 @Component({
@@ -10,9 +10,9 @@ import { RandomColor } from '../shared/directives/random-color';
   styleUrl: './header.scss',
 })
 export class Header {
-  // @Output() readonly filterChanged = new EventEmitter<string | null>();
-
+  readonly nbItemsInCart = input<number>();
   readonly filterChanged = output<string | null>();
+  // @Output() readonly filterChanged = new EventEmitter<string | null>();
 
   protected filter: string | null = null;
 
