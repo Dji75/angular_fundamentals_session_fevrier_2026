@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { Cart } from './cart/cart';
 import { ProductList } from './product-list/product-list';
 import { ProductDetail } from './product-detail/product-detail';
+import { Login } from './login/login';
 
 export const routes: Routes = [
   {
@@ -20,7 +21,7 @@ export const routes: Routes = [
       {
         path: '',
         component: ProductList,
-        title: 'Produits'
+        title: 'Produits',
       },
       {
         path: ':id',
@@ -28,6 +29,11 @@ export const routes: Routes = [
         title: 'Product detail'
       },
     ],
+  },
+  {
+    path: 'login',
+    component: Login,
+    title: 'Login'
   },
   { path: '**' , redirectTo: '', pathMatch: 'full' }
 ];
