@@ -1,6 +1,6 @@
 <div class="container mx-auto">
   <div class="cardGroup">
-    @for (p of filteredProduct; track p.id) {
+    @for (p of filteredProduct(); track p.id) {
       <ngs-product-card [product]="p"></ngs-product-card>
 <!--      @if (!$last) {-->
 <!--        <div class="line"></div>-->
@@ -8,4 +8,4 @@
     }
   </div>
 </div>
-PRODUITS: {{ products | json }}
+PRODUITS: {{ products() | json }}
