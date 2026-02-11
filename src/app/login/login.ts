@@ -1,26 +1,28 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { Credentials } from '../shared/models/credentials';
-import { FormsModule } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CustomValidators } from '../shared/validators/custom.validators';
 
 @Component({
   selector: 'ngs-login',
   imports: [
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
 export class Login {
   readonly #router = inject(Router);
+  readonly #fb = inject(FormBuilder);
 
-  protected readonly credentials: Credentials = {
-    email: '',
-    password: '',
-  };
+  protected readonly loginForm = this.#fb.group({
+    email: this.#fb.control(''),
+    password: this.#fb.control(''),
+  }, { validators: [CustomValidators.notPasswordSameAsLogin()] });
 
   protected login() {
-    console.log('login: ', this.credentials.email, this.credentials.password);
+    console.log('login: ', this.loginForm.value.email, this.loginForm.value.password);
     this.#router.navigate(['/']);
   }
 }
