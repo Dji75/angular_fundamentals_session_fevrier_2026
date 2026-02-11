@@ -3,13 +3,15 @@ import { Product } from '../../models/product';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import { TruncatePipe } from '../../pipes/truncate-pipe';
 import { CartService } from '../../services/cart.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'ngs-product-card',
   imports: [
     CurrencyPipe,
     DecimalPipe,
-    TruncatePipe
+    TruncatePipe,
+    RouterLink
   ],
   templateUrl: './product-card.html',
   styleUrl: './product-card.scss',

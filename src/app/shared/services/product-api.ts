@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Product } from '../models/product';
 import { environment } from '../../../environments/environment';
 
@@ -13,5 +13,10 @@ export class ProductApi {
   getProducts(): Observable<Product[]> {
     // works but legacy return this.#http.get<Product[]>(environment.apiUrl + '/products');
     return this.#http.get<Product[]>(`${environment.apiUrl}/products`);
+  }
+
+  getProductDetail(id: string): Observable<Product> {
+    // TODO we will suppose id always exists but in reality we would handle fail cases
+    return this.#http.get<Product[]>(`${environment.apiUrl}/products`, { params: { id } }).pipe(map(p => p[0]));
   }
 }

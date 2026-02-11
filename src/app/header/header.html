@@ -59,7 +59,7 @@
         <div class="ml-3 relative">
           <div class="justify-content-center mx-auto text-center">
             <div class="cartMenu">
-              <a class="cartButton" href="/cart.html">
+              <a class="cartButton" routerLink="cart" routerLinkActive="active">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" class="cartIcon">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
                 </svg>
@@ -73,31 +73,3 @@
   </div>
 </nav>
 <div class="bg-zinc-900/10 mx-auto h-[1.1px] shadow-sm shadow-zinc-900/10 px-12"></div>
-<nav class="categoryNav">
-  <div>
-    <a class="categoryLink" [class.isActive]="!filter" href="/" (click)="clearFilter(); $event.preventDefault()">
-      <h1 class="truncate">All</h1>
-    </a>
-  </div>
-  <div>
-    <a class="categoryLink" [class.isActive]="filter === 'electronics'" href="/electronics" (click)="updateFilter('electronics'); $event.preventDefault()">
-      <h1 class="truncate">Electronics</h1>
-    </a>
-  </div>
-  <div>
-    <a class="categoryLink" [class.isActive]="filter === 'jewelery'" href="/jewelery" (click)="updateFilter('jewelery'); $event.preventDefault()">
-      <h1 class="truncate">Jewelery</h1>
-    </a>
-  </div>
-  <div>
-    <a class="categoryLink" [class.isActive]="filter === 'men\'s clothing'" href="/men's clothing" (click)="updateFilter('men\'s clothing'); $event.preventDefault()">
-      <h1 class="truncate">Men's Clothing</h1>
-    </a>
-  </div>
-  <div>
-    <a class="categoryLink" [class.isActive]="filter === 'women\'s clothing'" href="/women's clothing" (click)="updateFilter('women\'s clothing'); $event.preventDefault()">
-      <h1 class="truncate">Women's Clothing</h1>
-    </a>
-  </div>
-</nav>
-<div class="bg-zinc-900/10 mx-auto h-[1px] shadow-sm shadow-zinc-900/10 px-12"></div>

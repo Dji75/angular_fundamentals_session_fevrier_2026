@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './header/header';
-import { ProductList } from './product-list/product-list';
 import { RandomColor } from './shared/directives/random-color';
-import { Product } from './shared/models/product';
 
 enum State {
   Loading = 'loading',
@@ -13,7 +11,7 @@ enum State {
 
 @Component({
   selector: 'ngs-root',
-  imports: [RouterOutlet, Header, ProductList, RandomColor],
+  imports: [RouterOutlet, Header, RandomColor],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -24,10 +22,4 @@ export class App {
   protected readonly isEndOfLifeProducts = false;
   protected readonly color = 'green';
   protected readonly State = State;
-
-  protected filter: string | null = null;
-
-  protected setFilter(filter: string | null) {
-    this.filter = filter;
-  }
 }
